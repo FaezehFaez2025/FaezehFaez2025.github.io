@@ -5,311 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faezeh Faez - Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-            padding: 0;
+            line-height: 1.6; color: #333; background-color: #fff; padding: 0;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-        }
-        
-        /* Navigation Styles */
-        .nav {
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: flex;
-            gap: 20px;
-            margin-bottom: 0;
-        }
-        
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; }
+        /* Navigation */
+        .nav { position: absolute; top: 0; right: 0; display: flex; gap: 20px; }
         .nav-item {
-            padding: 8px 0;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            color: #666;
-            font-size: 1rem;
+            padding: 8px 0; cursor: pointer; border-bottom: 2px solid transparent;
+            transition: all 0.3s ease; font-weight: 500; color: #666; font-size: 1rem;
         }
-        
-        .nav-item:hover {
-            color: #333;
-            border-bottom-color: #ddd;
-        }
-        
-        .nav-item.active {
-            color: #333;
-            border-bottom-color: #333;
-        }
-        
-        /* Tab Content Styles */
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .header {
-            text-align: left;
-            margin-bottom: 40px;
-            margin-top: 50px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
+        .nav-item:hover { color: #333; border-bottom-color: #ddd; }
+        .nav-item.active { color: #333; border-bottom-color: #333; }
+        /* Tabs */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .header { text-align: left; margin-bottom: 40px; margin-top: 50px; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 10px; color: #1a1a1a; }
+        .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
         .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 20px 0;
-            display: block;
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            margin: 20px 0; display: block;
         }
-        
-        .content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
-        
-        .content p {
-            margin-bottom: 20px;
-        }
-        
-        /* Publications Styles */
-        .publication {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .publication:last-child {
-            border-bottom: none;
-        }
-        
-        .pub-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-        
-        .pub-authors {
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .pub-venue {
-            color: #0066cc;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        
-        .pub-description {
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        /* Resume Styles */
-        .resume-section {
-            margin-bottom: 30px;
-        }
-        
+        .content { font-size: 1.1rem; line-height: 1.8; text-align: justify; }
+        .content p { margin-bottom: 20px; }
+        /* Publications */
+        .publication { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .publication:last-child { border-bottom: none; }
+        .pub-title { font-weight: 600; margin-bottom: 8px; color: #1a1a1a; }
+        .pub-authors { color: #666; margin-bottom: 5px; }
+        .pub-venue { color: #0066cc; font-style: italic; margin-bottom: 10px; }
+        .pub-description { color: #555; line-height: 1.6; }
+        /* Resume */
+        .resume-section { margin-bottom: 30px; }
         .resume-section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
+            font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: #1a1a1a;
+            border-bottom: 2px solid #eee; padding-bottom: 5px;
         }
-        
-        .resume-item {
-            margin-bottom: 20px;
-        }
-        
-        .resume-title {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-        
-        .resume-org {
-            color: #0066cc;
-            font-style: italic;
-        }
-        
-        .resume-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .resume-description {
-            margin-top: 5px;
-            color: #555;
-        }
-        
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
+        .resume-item { margin-bottom: 20px; }
+        .resume-title { font-weight: 600; color: #1a1a1a; }
+        .resume-org { color: #0066cc; font-style: italic; }
+        .resume-date { color: #666; font-size: 0.9rem; }
+        .resume-description { margin-top: 5px; color: #555; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-            
-            .nav {
-                position: static;
-                justify-content: center;
-                gap: 15px;
-                margin-bottom: 30px;
-            }
-            
-            .header {
-                margin-top: 0;
-            }
-            
-            .nav-item {
-                padding: 8px 0;
-                font-size: 0.9rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .content {
-                font-size: 1rem;
-            }
+            .container { padding: 20px 15px; }
+            .nav { position: static; justify-content: center; gap: 15px; margin-bottom: 30px; }
+            .header { margin-top: 0; }
+            .nav-item { padding: 8px 0; font-size: 0.9rem; }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .profile-image { width: 150px; height: 150px; }
+            .content { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Navigation -->
-        <div class="nav">
-            <div class="nav-item active" onclick="showTab('about')">about</div>
-            <div class="nav-item" onclick="showTab('publications')">publications</div>
-            <div class="nav-item" onclick="showTab('resume')">resume</div>
-        </div>
-        
+        <nav class="nav" aria-label="Primary">
+            <button class="nav-item active" onclick="showTab('about', this)">about</button>
+            <button class="nav-item" onclick="showTab('publications', this)">publications</button>
+            <button class="nav-item" onclick="showTab('resume', this)">resume</button>
+        </nav>
+
         <!-- About Tab -->
-        <div id="about" class="tab-content active">
+        <section id="about" class="tab-content active" aria-labelledby="About">
             <div class="header">
                 <h1>Faezeh Faez</h1>
                 <p class="subtitle">Your Title - Your Location</p>
                 <img src="profile-photo.jpg" alt="Faezeh Faez" class="profile-image">
             </div>
-            
             <div class="content">
                 <p>I am a [Your Profession] with a focus on [your specialization]. Currently, I am part of <a href="https://company-website.com">Your Company</a>, where I [describe what you do]. My recent work involves [describe recent projects or focus areas].</p>
-                
                 <p>I completed my [Degree] in [Field] at <a href="https://university-website.com">Your University</a>, where I researched [your research topic]. During my studies, I contributed to [projects/internships] at <a href="https://company-website.com">Previous Company</a>. Prior to [current role], I worked at <a href="https://another-company.com">Another Company</a> as a [Previous Role]. I earned my [Previous Degree] from [Previous Institution].</p>
-                
                 <p>I am passionate about [your interests] and am particularly interested in [specific areas of interest]. I enjoy creating solutions that [describe your impact/goals].</p>
-                
                 <p>I love connecting with new people to explore collaboration opportunities, exchange ideas, or simply share experiences. Feel free to reach out via <a href="mailto:your.email@gmail.com">email</a> or connect with me on <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>.</p>
             </div>
-        </div>
-        
+        </section>
+
         <!-- Publications Tab -->
-        <div id="publications" class="tab-content">
+        <section id="publications" class="tab-content" aria-labelledby="Publications">
             <div class="header">
                 <h1>Publications</h1>
             </div>
-            
+
             <div class="content">
+                <!-- Todyformer (TMLR 2024) -->
                 <div class="publication">
-                    <div class="pub-title">Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization</div>
-                    <div class="pub-authors">Faezeh Faez, Raika Karimi, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
-                    <div class="pub-venue">Transactions on Machine Learning Research, 2024</div>
-                    <div class="pub-description">A novel Transformer-based neural network tailored for dynamic graphs that unifies the local encoding capacity of Message-Passing Neural Networks (MPNNs) with the global encoding of Transformers through a novel patchifying paradigm for dynamic graphs to improve over-squashing.</div>
+                    <div class="pub-title">
+                        <a href="https://arxiv.org/abs/2402.05944" target="_blank" rel="noopener">
+                            Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization
+                        </a>
+                    </div>
+                    <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, Yingxue Zhang</div>
+                    <div class="pub-venue">Transactions on Machine Learning Research (TMLR), 2024</div>
+                    <div class="pub-description">
+                        A Transformer-based architecture for dynamic graphs that introduces structure-aware tokenization and alternating local/global contextualization to mitigate over-squashing and over-smoothing; demonstrates SOTA results on temporal graph benchmarks.
+                    </div>
                 </div>
-                
+
+                <!-- SCGG (PLOS ONE 2022) -->
                 <div class="publication">
-                    <div class="pub-title">HierAD: A Hierarchical Representation Learning Strategy for Analog IC Layout Defect Detection</div>
-                    <div class="pub-authors">Raika Karimi, Faezeh Faez, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
-                    <div class="pub-venue">2024</div>
-                    <div class="pub-description">Contemporary hardware design benefits from the abstraction provided by high-level logic gates, streamlining the implementation of logic circuits.</div>
+                    <div class="pub-title">
+                        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277887" target="_blank" rel="noopener">
+                            SCGG: A Deep Structure-Conditioned Graph Generative Model
+                        </a>
+                    </div>
+                    <div class="pub-authors"><strong>Faezeh Faez</strong>, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+                    <div class="pub-venue">PLOS ONE, 2022</div>
+                    <div class="pub-description">
+                        Proposes a conditional graph generation framework that completes graphs by autoregressively adding nodes/edges conditioned on a subgraph; validated on synthetic and real datasets.
+                    </div>
                 </div>
-                
+
+                <!-- CCGG (WWW 2022 Companion) -->
                 <div class="publication">
-                    <div class="pub-title">SCGG: A Deep Structure-Conditioned Graph Generative Model</div>
-                    <div class="pub-authors">Faezeh Faez, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-                    <div class="pub-venue">2022</div>
-                    <div class="pub-description">A conditional deep graph generation method that considers a particular type of structural conditions, and can address graph completion, a rampant and inherently difficult problem of recovering missing nodes and their associated edges of partially observed graphs.</div>
+                    <div class="pub-title">
+                        <a href="https://dl.acm.org/doi/10.1145/3487553.3524721" target="_blank" rel="noopener">
+                            CCGG: A Deep Autoregressive Model for Class-Conditional Graph Generation
+                        </a>
+                    </div>
+                    <div class="pub-authors">Yassaman Ommi, Matin Yousefabadi, <strong>Faezeh Faez</strong>, Amirmojtaba Sabour, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+                    <div class="pub-venue">The Web Conference (WWW) 2022 Companion Proceedings, 2022</div>
+                    <div class="pub-description">
+                        Introduces a class-conditioned graph generator that injects label information and auxiliary classification loss to guide graph synthesis; outperforms prior conditional baselines.
+                    </div>
                 </div>
-                
+
+                <!-- DMNP (ASONAM 2022) -->
                 <div class="publication">
-                    <div class="pub-title">DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs</div>
-                    <div class="pub-authors">Faezeh Faez, Ali Akhoondian Amiri, Mahdieh Soleymani, Hamid R. Rabiee</div>
-                    <div class="pub-venue">Conference Paper, 2022</div>
-                    <div class="pub-description">A deep learning approach for predicting missing nodes in partially observed graphs using advanced neural network architectures.</div>
+                    <div class="pub-title">
+                        <a href="https://researchr.org/publication/FaezABR22" target="_blank" rel="noopener">
+                            DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs
+                        </a>
+                    </div>
+                    <div class="pub-authors"><strong>Faezeh Faez</strong>, Ali Akhoondian Amiri, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+                    <div class="pub-venue">IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), 2022</div>
+                    <div class="pub-description">
+                        Proposes a deep model for predicting unobserved (missing) nodes in partially observed graphs, improving network completion under limited visibility.
+                    </div>
                 </div>
-                
-                <div class="publication">
-                    <div class="pub-title">Class Conditioned Graph Generator (CCGG)</div>
-                    <div class="pub-authors">Matin Yousefabadi, Yassaman Ommi, Faezeh Faez, Amirmojtaba Sabour, Mahdieh Baghshah, Hamid R. Rabiee</div>
-                    <div class="pub-venue">2021</div>
-                    <div class="pub-description">Addresses the problem of class-conditional graph generation that uses class labels as generation constraints by introducing the Class Conditioned Graph Generator (CCGG), a model that outperforms existing conditional graph generation methods.</div>
-                </div>
-                
-                <div class="publication">
-                    <div class="pub-title">A Deep Generative Approach to Conditional Sampling</div>
-                    <div class="pub-authors">Faezeh Faez, Yassaman Ommi, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-                    <div class="pub-venue">2020</div>
-                    <div class="pub-description">Deep generative models have achieved great success in areas such as image, speech, and natural language processing. This work presents novel approaches to conditional sampling in generative models.</div>
-                </div>
-                
-                <p>For a complete list of publications, please visit my <a href="https://scholar.google.com/citations?user=D4gvIl8AAAAJ&hl=en&oi=ao">Google Scholar profile</a>.</p>
+
+                <p>For a complete and always up-to-date list, see my
+                    <a href="https://scholar.google.com/citations?user=D4gvIl8AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar profile</a>.
+                </p>
             </div>
-        </div>
-        
+        </section>
+
         <!-- Resume Tab -->
-        <div id="resume" class="tab-content">
+        <section id="resume" class="tab-content" aria-labelledby="Resume">
             <div class="header">
                 <h1>Resume</h1>
             </div>
-            
             <div class="content">
                 <div class="resume-section">
                     <h3>Education</h3>
@@ -325,7 +176,7 @@
                         <div class="resume-date">Year - Year</div>
                     </div>
                 </div>
-                
+
                 <div class="resume-section">
                     <h3>Experience</h3>
                     <div class="resume-item">
@@ -341,7 +192,7 @@
                         <div class="resume-description">Description of responsibilities and achievements.</div>
                     </div>
                 </div>
-                
+
                 <div class="resume-section">
                     <h3>Skills</h3>
                     <div class="resume-item">
@@ -352,31 +203,21 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <p>Download full resume as <a href="resume.pdf">PDF</a></p>
             </div>
-        </div>
+        </section>
     </div>
 
     <script>
-        function showTab(tabName) {
-            // Hide all tab contents
+        function showTab(tabName, el) {
             const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all nav items
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Show selected tab content
+            tabContents.forEach(c => c.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked nav item
-            event.target.classList.add('active');
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(i => i.classList.remove('active'));
+            if (el) el.classList.add('active');
         }
     </script>
 </body>
