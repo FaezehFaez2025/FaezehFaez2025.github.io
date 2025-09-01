@@ -16,6 +16,7 @@
         .nav-item {
             padding: 8px 0; cursor: pointer; border-bottom: 2px solid transparent;
             transition: all 0.3s ease; font-weight: 500; color: #666; font-size: 1rem;
+            background: none; border: none;
         }
         .nav-item:hover { color: #333; border-bottom-color: #ddd; }
         .nav-item.active { color: #333; border-bottom-color: #333; }
@@ -69,7 +70,8 @@
         <nav class="nav" aria-label="Primary">
             <button class="nav-item active" onclick="showTab('about', this)">about</button>
             <button class="nav-item" onclick="showTab('publications', this)">publications</button>
-            <button class="nav-item" onclick="showTab('resume', this)">resume</button>
+            <!-- changed from button to link; opens standalone resume page -->
+            <a class="nav-item" href="resume.html">resume</a>
         </nav>
 
         <!-- About Tab -->
@@ -181,7 +183,7 @@
             </div>
         </section>
 
-        <!-- Resume Tab -->
+        <!-- Resume Tab (kept exactly as you had it; now optional since resume.html exists) -->
         <section id="resume" class="tab-content" aria-labelledby="Resume">
             <div class="header">
                 <h1>Resume</h1>
@@ -238,11 +240,12 @@
         function showTab(tabName, el) {
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(c => c.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
+            const target = document.getElementById(tabName);
+            if (target) target.classList.add('active');
 
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(i => i.classList.remove('active'));
-            if (el) el.classList.add('active');
+            if (el && el.tagName === 'BUTTON') el.classList.add('active');
         }
     </script>
 </body>
