@@ -88,15 +88,12 @@
   .row-top{display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:flex-start}
   .role{font-weight:800}
   .org{color:var(--ink);font-weight:600}
-  .pill{
-    background:var(--chip-bg);color:var(--teal-dark);font-weight:700;font-size:12px;
-    padding:6px 10px;border-radius:999px;border:1px solid var(--border)
-  }
   .desc{color:var(--muted-2);margin-top:6px}
+  .desc strong{color:var(--teal-dark)}
 
-  /* ===== Education: time + location row (match template) ===== */
+  /* date chip + location (shared with Education) */
   .meta{
-    display:flex;align-items:center;gap:12px; /* tighter like the template */
+    display:flex;align-items:center;gap:12px;
     margin:0 0 10px;font-size:13.5px;line-height:1
   }
   .chip-solid{
@@ -110,8 +107,7 @@
   }
   .loc svg{
     width:14px;height:14px;fill:var(--teal);
-    transform:translateY(1px); /* baseline align pin with text */
-    flex:0 0 auto
+    transform:translateY(1px);flex:0 0 auto
   }
 
   /* Publications */
@@ -199,21 +195,89 @@
         <div id="work" class="anchor"></div>
         <section class="card">
           <h3><span class="dot"></span>Work</h3>
+
+          <!-- Huawei Noah’s Ark Lab -->
           <div class="entry">
-            <div class="row-top">
-              <div class="role">Research Associate</div>
-              <div class="org">Your Organization</div>
-            </div>
-            <div class="meta" style="margin-top:8px">
-              <span class="chip-solid">2024.05 – Present</span>
+            <div class="meta">
+              <span class="chip-solid">Jul 2023 – Present</span>
               <span class="loc">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                City, Country
+                Tehran, Iran
               </span>
             </div>
+            <div class="row-top">
+              <div class="role">Associate Researcher</div>
+              <div class="org">Huawei Noah’s Ark Lab</div>
+            </div>
             <div class="desc">
-              • Lead R&amp;D on efficient LLM workflows (speculative decoding, hybrid attention, Mamba-style blocks).<br/>
-              • Built data/experiment pipelines; improved training throughput and reliability.
+              <strong>Product:</strong> ✓ AI4EDA<br/>
+              Authored research papers on the application of machine learning approaches to Electronic
+              Design Automation (EDA), focusing specifically on logic synthesis.
+            </div>
+          </div>
+
+          <!-- Fanap Telecom -->
+          <div class="entry">
+            <div class="meta">
+              <span class="chip-solid">Jan 2021 – Mar 2022</span>
+              <span class="loc">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                Tehran, Iran
+              </span>
+            </div>
+            <div class="row-top">
+              <div class="role">Data and Business Intelligence Reports Expert</div>
+              <div class="org">Fanap Telecom</div>
+            </div>
+            <div class="desc">
+              <strong>Product:</strong> ✓ Fanap Telecom’s Data Warehouse<br/>
+              A central repository designed to store integrated data from disparate data sources, used for
+              reporting and data analysis and serving as the core component of Fanap Telecom’s business
+              intelligence system.<br/>
+              <strong>Utilized Tools:</strong> Oracle Data Integrator (ODI), Oracle Business Intelligence
+              Enterprise Edition (OBIEE).
+            </div>
+          </div>
+
+          <!-- Fanavaran Etelaate Sokhan -->
+          <div class="entry">
+            <div class="meta">
+              <span class="chip-solid">Nov 2018 – May 2020</span>
+              <span class="loc">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                Tehran, Iran
+              </span>
+            </div>
+            <div class="row-top">
+              <div class="role">AI Expert · Project Manager · Product Manager</div>
+              <div class="org">Fanavaran Etelaate Sokhan</div>
+            </div>
+            <div class="desc">
+              <strong>Products:</strong><br/>
+              ✓ <em>Comprehensive Web-Based Crisis Management System (CWCMS)</em> — A comprehensive AI-based
+              decision support system for crisis management consisting of multiple subsystems (text
+              processing, image processing, and Bayesian network subsystems). Key features included:
+              Earthquake DSS • Live Sensor • Sentiment Analyzer • Public Reporting System (PRS).<br/><br/>
+              ✓ <em>OpenMarkovDSS</em> — An extension of OpenMarkov (open-source, Java-based tool for probabilistic
+              graphical models) adding numerous features for crisis-management decision support.
+            </div>
+          </div>
+
+          <!-- Iran’s Micro Systems Lab -->
+          <div class="entry">
+            <div class="meta">
+              <span class="chip-solid">Summer 2014</span>
+              <span class="loc">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                Tehran, Iran
+              </span>
+            </div>
+            <div class="row-top">
+              <div class="role">Java Developer</div>
+              <div class="org">Iran’s Micro Systems Lab</div>
+            </div>
+            <div class="desc">
+              <strong>Product:</strong> ✓ An automatic report generating system.
             </div>
           </div>
         </section>
