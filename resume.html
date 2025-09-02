@@ -92,7 +92,7 @@
   .value{color:var(--ink)}
   .summary{color:var(--muted-2);line-height:1.7;margin-top:8px}
 
-  .entry{padding:14px 0;border-bottom:1px solid var(--border)}
+  .entry{padding:16px 0;border-bottom:1px solid var(--border)}
   .entry:last-child{border-bottom:none}
   .row-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
   .role{font-weight:700}
@@ -102,6 +102,16 @@
     padding:6px 10px; border-radius:999px; border:1px solid var(--border)
   }
   .desc{color:var(--muted-2);margin-top:6px}
+
+  /* --- Education meta (date chip + location) --- */
+  .meta{display:flex;align-items:center;gap:18px;margin:10px 0 6px}
+  .chip-solid{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 12px;border-radius:10px;background:var(--teal);color:#fff;
+    font-weight:800;font-size:12px;letter-spacing:.02em;box-shadow:0 4px 12px rgba(0,0,0,.08)
+  }
+  .loc{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+  .loc svg{width:14px;height:14px;fill:var(--teal)}
 
   /* Publications */
   .pub-item{padding:14px 0;border-bottom:1px solid var(--border)}
@@ -219,25 +229,40 @@
         <div id="education" class="anchor"></div>
         <section class="card">
           <h3><span class="dot"></span>Education</h3>
+
+          <!-- Entry: M.Math -->
           <div class="entry">
-            <div class="row-top">
-              <div>
-                <div class="role">Ph.D., [Field]</div>
-                <div class="org">University Name</div>
-              </div>
-              <span class="pill">20XX – 20XX</span>
+            <div class="meta">
+              <span class="chip-solid">2021.09 – 2023.12</span>
+              <span class="loc">
+                <!-- location pin -->
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                Waterloo, Canada
+              </span>
             </div>
-            <div class="desc">Dissertation: “[Title]”. Advisor: [Name].</div>
+            <div class="row-top" style="justify-content:flex-start;gap:24px">
+              <div class="role" style="color:var(--teal-dark);font-weight:800;">M.Math.</div>
+              <div class="org" style="font-style:normal;color:var(--ink);font-weight:600">University of Waterloo</div>
+            </div>
+            <div class="desc" style="font-style:italic">Computer Science</div>
           </div>
+
+          <!-- Entry: B.Sc. -->
           <div class="entry">
-            <div class="row-top">
-              <div>
-                <div class="role">M.S., [Field]</div>
-                <div class="org">University Name</div>
-              </div>
-              <span class="pill">20XX – 20XX</span>
+            <div class="meta">
+              <span class="chip-solid">2017.09 – 2021.12</span>
+              <span class="loc">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 12 6 12s6-7 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                Tehran, Iran
+              </span>
             </div>
+            <div class="row-top" style="justify-content:flex-start;gap:24px">
+              <div class="role" style="color:var(--teal-dark);font-weight:800;">B.Sc.</div>
+              <div class="org" style="font-style:normal;color:var(--ink);font-weight:600">Sharif University of Technology</div>
+            </div>
+            <div class="desc" style="font-style:italic">Computer Engineering</div>
           </div>
+
         </section>
 
         <!-- PUBLICATIONS -->
