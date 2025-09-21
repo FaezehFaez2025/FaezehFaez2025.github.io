@@ -15,12 +15,12 @@
     --shadow:0 8px 24px rgba(0,0,0,.06);
 
     /* Accent */
-    --teal:#26B99A;          /* primary accent */
+    --teal:#26B99A;
     --teal-dark:#1f9e83;
     --chip-bg:#e6f7f3;
 
     /* Extras */
-    --link-blue:#2563eb;     /* thesis label blue */
+    --link-blue:#2563eb;
   }
 
   *{box-sizing:border-box}
@@ -75,9 +75,10 @@
     padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px
   }
   .card h3{
-    display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:22px;font-weight:700
+    /* removed the bullet/dot before titles */
+    margin:0 0 14px;font-size:22px;font-weight:700
   }
-  .card h3 .dot{width:10px;height:10px;border-radius:50%;background:var(--teal)}
+
   .grid{display:grid;grid-template-columns:160px 1fr;gap:10px 18px}
   .label{color:var(--muted);font-weight:600}
   .value{color:var(--ink)}
@@ -86,13 +87,13 @@
   /* ===== Work section (template-like layout) ===== */
   .work-list{list-style:none;margin:0;padding:0}
   .work-item{
-    display:grid;grid-template-columns:160px 1fr;gap:18px;
-    padding:14px 0;border-top:1px solid var(--border)
+    display:grid;grid-template-columns:120px 1fr;  /* slimmer like template */
+    gap:18px;padding:16px 0;border-top:1px solid var(--border)
   }
   .work-item:first-child{border-top:none;padding-top:2px}
 
   .date-col{
-    display:flex;justify-content:center
+    display:flex;justify-content:flex-start;align-items:flex-start; /* top-align badge */
   }
   .date-badge{
     display:inline-block;min-width:110px;
@@ -173,7 +174,7 @@
         <!-- BASICS -->
         <div id="basics" class="anchor"></div>
         <section class="card">
-          <h3><span class="dot"></span>Basics</h3>
+          <h3>Basics</h3>
           <div class="grid">
             <div class="label">Name</div>
             <div class="value">Faezeh Faez</div>
@@ -196,7 +197,7 @@
         <!-- WORK -->
         <div id="work" class="anchor"></div>
         <section class="card">
-          <h3><span class="dot"></span>Work</h3>
+          <h3>Work</h3>
 
           <ul class="work-list">
 
@@ -228,7 +229,7 @@
                 <h6 class="org">Huawei Noah’s Ark Lab</h6>
                 <p class="tagline"><strong>Product:</strong> ✓ AI4EDA</p>
                 <ul class="items">
-                  <li><span class="item">Authored research papers on the application of machine learning approaches to Electronic Design Automation (EDA), focusing specifically on logic synthesis.</span></li>
+                  <li><span class="item">Authored research papers on applying machine learning to Electronic Design Automation (EDA), with emphasis on logic synthesis.</span></li>
                 </ul>
               </div>
             </li>
@@ -284,7 +285,7 @@
         <!-- EDUCATION -->
         <div id="education" class="anchor"></div>
         <section class="card">
-          <h3><span class="dot"></span>Education</h3>
+          <h3>Education</h3>
 
           <div class="entry">
             <div class="grid">
@@ -318,7 +319,7 @@
         <!-- PUBLICATIONS -->
         <div id="publications" class="anchor"></div>
         <section class="card">
-          <h3><span class="dot"></span>Publications</h3>
+          <h3>Publications</h3>
 
           <!-- MTLSO (ASPDAC 2025) -->
           <div class="pub-item">
