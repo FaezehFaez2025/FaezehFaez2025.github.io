@@ -80,14 +80,12 @@
   /* Work section */
   .work-list{list-style:none;margin:0;padding:0}
   .work-item{
-    display:grid;grid-template-columns:100px 1fr; /* narrower column */
+    display:grid;grid-template-columns:100px 1fr; /* slimmer column */
     gap:18px;padding:16px 0;border-top:1px solid var(--border)
   }
   .work-item:first-child{border-top:none;padding-top:2px}
 
-  .date-col{
-    display:flex;justify-content:flex-start;align-items:flex-start;
-  }
+  .date-col{display:flex;justify-content:flex-start;align-items:flex-start;}
   .date-badge{
     display:inline-block;min-width:95px;
     padding:6px 10px;border-radius:8px;
@@ -99,7 +97,7 @@
     margin:0;
     font-weight:700;
     font-size:16px;
-    white-space:nowrap; /* keep one line */
+    white-space:nowrap; /* keep in one line */
   }
   .org{margin:2px 0 0 0;font-weight:600;font-size:15px;color:var(--ink)}
   .tagline{margin:6px 0 0 0;font-size:14px;color:var(--muted-2);font-style:italic}
@@ -107,6 +105,16 @@
   .items{margin:10px 0 0 0;padding-left:20px}
   .items li{margin:6px 0;color:var(--ink);line-height:1.5}
   .items .item{color:var(--ink)}
+
+  .pub-item{padding:14px 0;border-bottom:1px solid var(--border)}
+  .pub-item:last-child{border-bottom:none}
+  .pub-title{font-weight:700}
+  .pub-authors{color:var(--muted);margin-top:4px}
+  .pub-venue{color:var(--teal-dark);font-style:italic;margin-top:2px}
+  .pub-description{color:var(--muted-2);margin-top:6px;line-height:1.6}
+
+  .thesis{color:var(--link-blue)}
+  .anchor{position:relative;top:-80px}
 
   @media (max-width:980px){
     .layout{grid-template-columns:1fr}
@@ -151,16 +159,11 @@
         <section id="basics" class="card">
           <h3>Basics</h3>
           <div class="grid">
-            <div class="label">Name</div>
-            <div class="value">Faezeh Faez</div>
-            <div class="label">Label</div>
-            <div class="value">Research Scientist (AI/ML)</div>
-            <div class="label">Email</div>
-            <div class="value"><a href="mailto:faezeh.faez@gmail.com">faezeh.faez@gmail.com</a></div>
-            <div class="label">Phone</div>
-            <div class="value">+1 (514) 655-0700</div>
-            <div class="label">URL</div>
-            <div class="value"><a href="https://your-site.example" target="_blank" rel="noopener">https://your-site.example</a></div>
+            <div class="label">Name</div><div class="value">Faezeh Faez</div>
+            <div class="label">Label</div><div class="value">Research Scientist (AI/ML)</div>
+            <div class="label">Email</div><div class="value"><a href="mailto:faezeh.faez@gmail.com">faezeh.faez@gmail.com</a></div>
+            <div class="label">Phone</div><div class="value">+1 (514) 655-0700</div>
+            <div class="label">URL</div><div class="value"><a href="https://your-site.example" target="_blank">https://your-site.example</a></div>
           </div>
         </section>
 
@@ -182,20 +185,86 @@
                 </ul>
               </div>
             </li>
-            <!-- More jobs here -->
+            <li class="work-item">
+              <div class="date-col"><span class="date-badge">2023.07 – Present</span></div>
+              <div>
+                <h6 class="role-title">Associate Researcher</h6>
+                <h6 class="org">Huawei Noah’s Ark Lab</h6>
+                <p class="tagline"><strong>Product:</strong> ✓ AI4EDA</p>
+                <ul class="items"><li><span class="item">Authored research papers on applying ML to EDA, with emphasis on logic synthesis.</span></li></ul>
+              </div>
+            </li>
+            <li class="work-item">
+              <div class="date-col"><span class="date-badge">2021.01 – 2022.03</span></div>
+              <div>
+                <h6 class="role-title">Data and BI Reports Expert</h6>
+                <h6 class="org">Fanap Telecom</h6>
+                <p class="tagline"><strong>Product:</strong> ✓ Fanap Telecom’s Data Warehouse</p>
+                <ul class="items">
+                  <li><span class="item">Central repository integrating disparate data sources for reporting and analysis.</span></li>
+                  <li><span class="item"><strong>Tools:</strong> Oracle Data Integrator (ODI), OBIEE.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="work-item">
+              <div class="date-col"><span class="date-badge">2018.11 – 2020.05</span></div>
+              <div>
+                <h6 class="role-title">AI Expert · Project Manager · Product Manager</h6>
+                <h6 class="org">Fanavaran Etelaate Sokhan</h6>
+                <ul class="items">
+                  <li><span class="item">✓ <em>CWCMS</em> — AI-based decision-support system with text/image processing and Bayesian subsystems.</span></li>
+                  <li><span class="item">✓ <em>OpenMarkovDSS</em> — Extension of OpenMarkov for crisis-management DSS.</span></li>
+                </ul>
+              </div>
+            </li>
+            <li class="work-item">
+              <div class="date-col"><span class="date-badge">2014 (Summer)</span></div>
+              <div>
+                <h6 class="role-title">Java Developer</h6>
+                <h6 class="org">Iran’s Micro Systems Lab</h6>
+                <ul class="items"><li><span class="item"><strong>Product:</strong> ✓ Automatic report-generation system.</span></li></ul>
+              </div>
+            </li>
           </ul>
         </section>
 
         <!-- Education -->
         <section id="education" class="card">
           <h3>Education</h3>
-          <!-- Your education content -->
+          <div class="grid">
+            <div class="label">2017 – 2023</div>
+            <div><div class="value"><strong>Ph.D. in AI</strong> — Sharif University of Technology</div><div class="summary">GPA 18.42/20. Thesis: Deep Conditional Graph Generation.</div></div>
+            <div class="label">2015 – 2017</div>
+            <div><div class="value"><strong>M.Sc. in Software Engineering</strong> — Sharif University</div><div class="summary">GPA 18.24/20. Thesis: Improving Recommendation Systems using Social Networks.</div></div>
+            <div class="label">2011 – 2015</div>
+            <div><div class="value"><strong>B.Sc. in Software Engineering</strong> — Sharif University</div><div class="summary">GPA 17.94/20.</div></div>
+            <div class="label">2007 – 2011</div>
+            <div><div class="value"><strong>Diploma in Math/Physics</strong> — Farzanegan High School</div><div class="summary">GPA 19.74/20.</div></div>
+          </div>
         </section>
 
         <!-- Publications -->
         <section id="publications" class="card">
           <h3>Publications</h3>
-          <!-- Your publications content -->
+          <div class="pub-item">
+            <div class="pub-title"><a href="#">MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization</a></div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, et al.</div>
+            <div class="pub-venue">ASPDAC 2025</div>
+            <div class="pub-description">Introduces a multi-task learning framework for logic synthesis optimization.</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><a href="#">Todyformer: Dynamic Graph Transformers</a></div>
+            <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, et al.</div>
+            <div class="pub-venue">TMLR</div>
+            <div class="pub-description">Dynamic graph transformer with structure-aware tokenization.</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><a href="#">SCGG: Structure-Conditioned Graph Generation</a></div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, et al.</div>
+            <div class="pub-venue">PLOS ONE, 2022</div>
+            <div class="pub-description">Autoregressive graph generation conditioned on subgraph structure.</div>
+          </div>
+          <!-- Add the rest of your pubs here -->
         </section>
       </main>
     </div>
