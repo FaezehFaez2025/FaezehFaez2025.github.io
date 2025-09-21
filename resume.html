@@ -14,10 +14,12 @@
     --border:#eaeaea;
     --shadow:0 8px 24px rgba(0,0,0,.06);
 
+    /* Accent */
     --teal:#26B99A;
     --teal-dark:#1f9e83;
     --chip-bg:#e6f7f3;
 
+    /* Extras */
     --link-blue:#2563eb;
   }
 
@@ -31,6 +33,7 @@
 
   .wrap{max-width:1100px;margin:0 auto;padding:32px 20px}
 
+  /* Header (name + nav) */
   header{
     display:flex;align-items:center;justify-content:space-between;
     padding:10px 0;margin-bottom:24px;border-bottom:1px solid var(--border)
@@ -44,6 +47,7 @@
   .top-nav a:hover{color:var(--ink)}
   .top-nav a.active{color:var(--teal-dark);font-weight:600}
 
+  /* PDF button */
   .pdf-btn{
     display:inline-flex;align-items:center;gap:6px;
     padding:8px 12px;border-radius:8px;border:1px solid var(--border);
@@ -54,6 +58,7 @@
 
   .layout{display:grid;grid-template-columns:220px 1fr;gap:28px;margin-top:30px}
 
+  /* left sidebar nav */
   .sidenav{position:sticky;top:20px;align-self:start;border-right:1px solid var(--border);padding-right:20px}
   .sidenav h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:8px 0 14px}
   .side-list{display:flex;flex-direction:column;gap:10px}
@@ -63,12 +68,14 @@
   }
   .side-link.active,.side-link:hover{color:var(--ink);border-left-color:var(--teal)}
 
+  /* right column cards */
   .page-title{font-size:40px;font-weight:700;margin:8px 0 14px}
   .card{
     background:var(--panel);border:1px solid var(--border);border-radius:14px;
     padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px
   }
   .card h3{
+    /* removed the bullet/dot before titles */
     margin:0 0 14px;font-size:22px;font-weight:700
   }
 
@@ -77,35 +84,34 @@
   .value{color:var(--ink)}
   .summary{color:var(--muted-2);line-height:1.7;margin-top:8px}
 
-  /* Work section */
+  /* ===== Work section (template-like layout) ===== */
   .work-list{list-style:none;margin:0;padding:0}
   .work-item{
-    display:grid;grid-template-columns:100px 1fr; /* slimmer column */
+    display:grid;grid-template-columns:120px 1fr;  /* slimmer like template */
     gap:18px;padding:16px 0;border-top:1px solid var(--border)
   }
   .work-item:first-child{border-top:none;padding-top:2px}
 
-  .date-col{display:flex;justify-content:flex-start;align-items:flex-start;}
+  .date-col{
+    display:flex;justify-content:flex-start;align-items:flex-start; /* top-align badge */
+  }
   .date-badge{
-    display:inline-block;min-width:95px;
+    display:inline-block;min-width:110px;
     padding:6px 10px;border-radius:8px;
     background:var(--chip-bg);color:#0f766e;font-weight:800;font-size:12.5px;
     text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--border)
   }
 
-  .role-title{
-    margin:0;
-    font-weight:700;
-    font-size:16px;
-    white-space:nowrap; /* keep in one line */
-  }
+  .role-title{margin:0;font-weight:700;font-size:16px}
   .org{margin:2px 0 0 0;font-weight:600;font-size:15px;color:var(--ink)}
   .tagline{margin:6px 0 0 0;font-size:14px;color:var(--muted-2);font-style:italic}
 
   .items{margin:10px 0 0 0;padding-left:20px}
   .items li{margin:6px 0;color:var(--ink);line-height:1.5}
   .items .item{color:var(--ink)}
+  /* ===== End Work section ===== */
 
+  /* Publications */
   .pub-item{padding:14px 0;border-bottom:1px solid var(--border)}
   .pub-item:last-child{border-bottom:none}
   .pub-title{font-weight:700}
@@ -121,12 +127,13 @@
     .sidenav{position:static;border-right:none;padding-right:0;margin-bottom:12px}
     .pdf-btn{position:static;margin:10px 0}
     .work-item{grid-template-columns:1fr}
-    .role-title{white-space:normal;} /* wrap on phones */
+    .date-col{justify-content:flex-start}
   }
 </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- Header -->
     <header>
       <div class="brand">
         <h1><strong>Faezeh</strong> Faez</h1>
@@ -139,10 +146,18 @@
       </nav>
     </header>
 
-    <button class="pdf-btn" onclick="window.print()">PDF</button>
+    <!-- PDF button -->
+    <button class="pdf-btn" onclick="window.print()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="#1f9e83" stroke-width="1.6"/>
+        <path d="M15 2v6h6" stroke="#1f9e83" stroke-width="1.6"/>
+      </svg>
+      PDF
+    </button>
 
     <div class="layout">
-      <aside class="sidenav">
+      <!-- Left in-page nav -->
+      <aside class="sidenav" aria-label="Resume sections">
         <h2>Sections</h2>
         <div class="side-list">
           <button class="side-link active" data-target="#basics">Basics</button>
@@ -152,27 +167,45 @@
         </div>
       </aside>
 
+      <!-- Right column -->
       <main>
         <div class="page-title">Resume</div>
 
-        <!-- Basics -->
-        <section id="basics" class="card">
+        <!-- BASICS -->
+        <div id="basics" class="anchor"></div>
+        <section class="card">
           <h3>Basics</h3>
           <div class="grid">
-            <div class="label">Name</div><div class="value">Faezeh Faez</div>
-            <div class="label">Label</div><div class="value">Research Scientist (AI/ML)</div>
-            <div class="label">Email</div><div class="value"><a href="mailto:faezeh.faez@gmail.com">faezeh.faez@gmail.com</a></div>
-            <div class="label">Phone</div><div class="value">+1 (514) 655-0700</div>
-            <div class="label">URL</div><div class="value"><a href="https://your-site.example" target="_blank">https://your-site.example</a></div>
+            <div class="label">Name</div>
+            <div class="value">Faezeh Faez</div>
+            <div class="label">Label</div>
+            <div class="value">Research Scientist (AI/ML)</div>
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:faezeh.faez@gmail.com">faezeh.faez@gmail.com</a></div>
+            <div class="label">Phone</div>
+            <div class="value">+1 (514) 655-0700</div>
+            <div class="label">URL</div>
+            <div class="value"><a href="https://your-site.example" target="_blank" rel="noopener">https://your-site.example</a></div>
           </div>
+          <p class="summary">
+            4+ years of experience in Machine Learning and AI research. Interests in graph learning,
+            knowledge graphs, LLMs, and model optimization (quantization, distillation). Experienced with
+            PyTorch, TensorFlow, and MLOps tooling.
+          </p>
         </section>
 
-        <!-- Work -->
-        <section id="work" class="card">
+        <!-- WORK -->
+        <div id="work" class="anchor"></div>
+        <section class="card">
           <h3>Work</h3>
+
           <ul class="work-list">
+
+            <!-- Research Associate — Huawei Technologies Canada -->
             <li class="work-item">
-              <div class="date-col"><span class="date-badge">2024.05 – Present</span></div>
+              <div class="date-col">
+                <span class="date-badge">2024.05 – Present</span>
+              </div>
               <div>
                 <h6 class="role-title">Research Associate</h6>
                 <h6 class="org">Huawei Technologies Canada</h6>
@@ -185,86 +218,193 @@
                 </ul>
               </div>
             </li>
+
+            <!-- Associate Researcher — Huawei Noah’s Ark Lab -->
             <li class="work-item">
-              <div class="date-col"><span class="date-badge">2023.07 – Present</span></div>
+              <div class="date-col">
+                <span class="date-badge">2023.07 – Present</span>
+              </div>
               <div>
                 <h6 class="role-title">Associate Researcher</h6>
                 <h6 class="org">Huawei Noah’s Ark Lab</h6>
                 <p class="tagline"><strong>Product:</strong> ✓ AI4EDA</p>
-                <ul class="items"><li><span class="item">Authored research papers on applying ML to EDA, with emphasis on logic synthesis.</span></li></ul>
-              </div>
-            </li>
-            <li class="work-item">
-              <div class="date-col"><span class="date-badge">2021.01 – 2022.03</span></div>
-              <div>
-                <h6 class="role-title">Data and BI Reports Expert</h6>
-                <h6 class="org">Fanap Telecom</h6>
-                <p class="tagline"><strong>Product:</strong> ✓ Fanap Telecom’s Data Warehouse</p>
                 <ul class="items">
-                  <li><span class="item">Central repository integrating disparate data sources for reporting and analysis.</span></li>
-                  <li><span class="item"><strong>Tools:</strong> Oracle Data Integrator (ODI), OBIEE.</span></li>
+                  <li><span class="item">Authored research papers on applying machine learning to Electronic Design Automation (EDA), with emphasis on logic synthesis.</span></li>
                 </ul>
               </div>
             </li>
+
+            <!-- Fanap Telecom -->
             <li class="work-item">
-              <div class="date-col"><span class="date-badge">2018.11 – 2020.05</span></div>
+              <div class="date-col">
+                <span class="date-badge">2021.01 – 2022.03</span>
+              </div>
+              <div>
+                <h6 class="role-title">Data and Business Intelligence Reports Expert</h6>
+                <h6 class="org">Fanap Telecom</h6>
+                <p class="tagline"><strong>Product:</strong> ✓ Fanap Telecom’s Data Warehouse</p>
+                <ul class="items">
+                  <li><span class="item">Central repository integrating disparate data sources for reporting and analysis; core of the company’s BI system.</span></li>
+                  <li><span class="item"><strong>Utilized Tools:</strong> Oracle Data Integrator (ODI), Oracle Business Intelligence Enterprise Edition (OBIEE).</span></li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- Fanavaran Etelaate Sokhan -->
+            <li class="work-item">
+              <div class="date-col">
+                <span class="date-badge">2018.11 – 2020.05</span>
+              </div>
               <div>
                 <h6 class="role-title">AI Expert · Project Manager · Product Manager</h6>
                 <h6 class="org">Fanavaran Etelaate Sokhan</h6>
                 <ul class="items">
-                  <li><span class="item">✓ <em>CWCMS</em> — AI-based decision-support system with text/image processing and Bayesian subsystems.</span></li>
-                  <li><span class="item">✓ <em>OpenMarkovDSS</em> — Extension of OpenMarkov for crisis-management DSS.</span></li>
+                  <li><span class="item">✓ <em>Comprehensive Web-Based Crisis Management System (CWCMS)</em> — AI-based decision-support system with text/image processing and Bayesian subsystems (Earthquake DSS, Live Sensor, Sentiment Analyzer, PRS).</span></li>
+                  <li><span class="item">✓ <em>OpenMarkovDSS</em> — Extension of OpenMarkov adding features for crisis-management decision support.</span></li>
                 </ul>
               </div>
             </li>
+
+            <!-- Iran’s Micro Systems Lab -->
             <li class="work-item">
-              <div class="date-col"><span class="date-badge">2014 (Summer)</span></div>
+              <div class="date-col">
+                <span class="date-badge">2014 (Summer)</span>
+              </div>
               <div>
                 <h6 class="role-title">Java Developer</h6>
                 <h6 class="org">Iran’s Micro Systems Lab</h6>
-                <ul class="items"><li><span class="item"><strong>Product:</strong> ✓ Automatic report-generation system.</span></li></ul>
+                <ul class="items">
+                  <li><span class="item"><strong>Product:</strong> ✓ Automatic report-generation system.</span></li>
+                </ul>
               </div>
             </li>
+
           </ul>
         </section>
 
-        <!-- Education -->
-        <section id="education" class="card">
+        <!-- EDUCATION -->
+        <div id="education" class="anchor"></div>
+        <section class="card">
           <h3>Education</h3>
-          <div class="grid">
-            <div class="label">2017 – 2023</div>
-            <div><div class="value"><strong>Ph.D. in AI</strong> — Sharif University of Technology</div><div class="summary">GPA 18.42/20. Thesis: Deep Conditional Graph Generation.</div></div>
-            <div class="label">2015 – 2017</div>
-            <div><div class="value"><strong>M.Sc. in Software Engineering</strong> — Sharif University</div><div class="summary">GPA 18.24/20. Thesis: Improving Recommendation Systems using Social Networks.</div></div>
-            <div class="label">2011 – 2015</div>
-            <div><div class="value"><strong>B.Sc. in Software Engineering</strong> — Sharif University</div><div class="summary">GPA 17.94/20.</div></div>
-            <div class="label">2007 – 2011</div>
-            <div><div class="value"><strong>Diploma in Math/Physics</strong> — Farzanegan High School</div><div class="summary">GPA 19.74/20.</div></div>
+
+          <div class="entry">
+            <div class="grid">
+              <div class="label">2017 – 2023</div>
+              <div>
+                <div class="value"><strong>Ph.D. in Artificial Intelligence</strong> — Sharif University of Technology</div>
+                <div class="summary"><em>GPA: 18.42/20</em>, <span class="thesis">Thesis Title:</span> Deep Conditional Graph Generation.</div>
+              </div>
+
+              <div class="label">2015 – 2017</div>
+              <div>
+                <div class="value"><strong>M.Sc. in Software Engineering</strong> — Sharif University of Technology</div>
+                <div class="summary"><em>GPA: 18.24/20</em>, <span class="thesis">Thesis Title:</span> Improving The Performance of Recommendation Systems by Exploiting Relationships and Temporal Behavior of Users in Social Networks.</div>
+              </div>
+
+              <div class="label">2011 – 2015</div>
+              <div>
+                <div class="value"><strong>B.Sc. in Software Engineering</strong> — Sharif University of Technology</div>
+                <div class="summary"><em>GPA: 17.94/20</em>.</div>
+              </div>
+
+              <div class="label">2007 – 2011</div>
+              <div>
+                <div class="value"><strong>Diploma in Mathematics and Physics Discipline</strong> — Farzanegan High School</div>
+                <div class="summary">Tehran, Iran, <em>GPA: 19.74/20</em>.</div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Publications -->
-        <section id="publications" class="card">
+        <!-- PUBLICATIONS -->
+        <div id="publications" class="anchor"></div>
+        <section class="card">
           <h3>Publications</h3>
+
+          <!-- MTLSO (ASPDAC 2025) -->
           <div class="pub-item">
-            <div class="pub-title"><a href="#">MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization</a></div>
-            <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, et al.</div>
-            <div class="pub-venue">ASPDAC 2025</div>
-            <div class="pub-description">Introduces a multi-task learning framework for logic synthesis optimization.</div>
+            <div class="pub-title">
+              <a href="https://doi.org/10.1145/xxxxxxx" target="_blank" rel="noopener">
+                MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization
+              </a>
+            </div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
+            <div class="pub-venue">Proceedings of the 30th Asia and South Pacific Design Automation Conference (ASPDAC), 2025, pp. 72–78</div>
+            <div class="pub-description">
+              Introduces a multi-task learning framework for logic synthesis optimization, jointly leveraging related tasks to improve circuit design efficiency and performance in electronic design automation.
+            </div>
           </div>
+
+          <!-- Todyformer (TMLR) -->
           <div class="pub-item">
-            <div class="pub-title"><a href="#">Todyformer: Dynamic Graph Transformers</a></div>
-            <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, et al.</div>
-            <div class="pub-venue">TMLR</div>
-            <div class="pub-description">Dynamic graph transformer with structure-aware tokenization.</div>
+            <div class="pub-title">
+              <a href="https://openreview.net/forum?id=xxxx" target="_blank" rel="noopener">
+                Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization
+              </a>
+            </div>
+            <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, Yingxue Zhang</div>
+            <div class="pub-venue">Transactions on Machine Learning Research (TMLR)</div>
+            <div class="pub-description">
+              Proposes a dynamic graph transformer framework with structure-aware tokenization, enabling holistic modeling of evolving graph structures for improved representation learning.
+            </div>
           </div>
+
+          <!-- SCGG (PLOS ONE 2022) -->
           <div class="pub-item">
-            <div class="pub-title"><a href="#">SCGG: Structure-Conditioned Graph Generation</a></div>
-            <div class="pub-authors"><strong>Faezeh Faez</strong>, et al.</div>
-            <div class="pub-venue">PLOS ONE, 2022</div>
-            <div class="pub-description">Autoregressive graph generation conditioned on subgraph structure.</div>
+            <div class="pub-title">
+              <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277887" target="_blank" rel="noopener">
+                SCGG: A Deep Structure-Conditioned Graph Generative Model
+              </a>
+            </div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+            <div class="pub-venue">PLOS ONE, 2022, Vol. 17(11): e0277887</div>
+            <div class="pub-description">
+              Introduces a structure-conditioned graph generative framework that completes graphs by autoregressively adding nodes and edges conditioned on a subgraph, validated on both synthetic and real-world datasets.
+            </div>
           </div>
-          <!-- Add the rest of your pubs here -->
+
+          <!-- DMNP (ASONAM 2022) -->
+          <div class="pub-item">
+            <div class="pub-title">
+              <a href="https://doi.org/10.1145/3555041.3559550" target="_blank" rel="noopener">
+                DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs
+              </a>
+            </div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, Ali Akhoondian Amiri, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+            <div class="pub-venue">Proceedings of the 2022 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), pp. 76–79</div>
+            <div class="pub-description">
+              Proposes a deep learning framework for predicting missing nodes in partially observed graphs, enhancing graph completion and analysis in social and information networks.
+            </div>
+          </div>
+
+          <!-- CCGG (WWW Companion 2022) -->
+          <div class="pub-item">
+            <div class="pub-title">
+              <a href="https://doi.org/10.1145/3487553.3524236" target="_blank" rel="noopener">
+                CCGG: A Deep Autoregressive Model for Class-Conditional Graph Generation
+              </a>
+            </div>
+            <div class="pub-authors">Yassaman Ommi, Matin Yousefabadi, <strong>Faezeh Faez</strong>, Amirmojtaba Sabour, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+            <div class="pub-venue">Companion Proceedings of The Web Conference (WWW), 2022, pp. 1092–1098</div>
+            <div class="pub-description">
+              Introduces a class-conditional graph generative model that autoregressively generates graphs conditioned on class labels, enabling controllable graph synthesis across diverse domains.
+            </div>
+          </div>
+
+          <!-- Deep Graph Generators (IEEE Access 2021) -->
+          <div class="pub-item">
+            <div class="pub-title">
+              <a href="https://ieeexplore.ieee.org/document/9506304" target="_blank" rel="noopener">
+                Deep Graph Generators: A Survey
+              </a>
+            </div>
+            <div class="pub-authors"><strong>Faezeh Faez</strong>, Yassaman Ommi, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+            <div class="pub-venue">IEEE Access, 2021, Vol. 9, pp. 106675–106702</div>
+            <div class="pub-description">
+              Provides a comprehensive survey of deep graph generative models, covering key architectures, applications, and open challenges in graph generation research.
+            </div>
+          </div>
+
         </section>
       </main>
     </div>
@@ -278,6 +418,15 @@
       if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
     });
   });
+  const sections = ['#basics','#work','#education','#publications'].map(s=>document.querySelector(s));
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(b=>b.classList.toggle('active', b.dataset.target === '#'+e.target.id));
+      }
+    });
+  }, {rootMargin:'-60% 0px -30% 0px', threshold:0});
+  sections.forEach(s=>observer.observe(s));
 </script>
 </body>
 </html>
