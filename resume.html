@@ -75,7 +75,7 @@
     padding:20px 22px;box-shadow:var(--shadow);margin-bottom:18px
   }
   .card h3{
-    /* removed the bullet/dot before titles */
+    /* no bullets before titles */
     margin:0 0 14px;font-size:22px;font-weight:700
   }
 
@@ -87,20 +87,23 @@
   /* ===== Work section (template-like layout) ===== */
   .work-list{list-style:none;margin:0;padding:0}
   .work-item{
-    display:grid;grid-template-columns:120px 1fr;  /* slimmer like template */
+    /* widen time column, narrow description column */
+    display:grid;grid-template-columns:170px 1fr;
     gap:18px;padding:16px 0;border-top:1px solid var(--border)
   }
   .work-item:first-child{border-top:none;padding-top:2px}
 
   .date-col{
-    display:flex;justify-content:flex-start;align-items:flex-start; /* top-align badge */
+    display:flex;justify-content:flex-start;align-items:flex-start;
   }
   .date-badge{
-    font-size:14px;
-    display:inline-block;min-width:110px;
+    display:inline-block;
     padding:6px 10px;border-radius:8px;
     background:var(--chip-bg);color:#0f766e;font-weight:800;font-size:12.5px;
-    text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--border)
+    text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--border);
+    min-width:120px;           /* a touch wider */
+    white-space:nowrap;        /* keep on one line */
+    line-height:1;             /* tighter to resist wrapping */
   }
 
   .role-title{margin:0;font-weight:700;font-size:16px}
@@ -129,6 +132,7 @@
     .pdf-btn{position:static;margin:10px 0}
     .work-item{grid-template-columns:1fr}
     .date-col{justify-content:flex-start}
+    .date-badge{white-space:nowrap}
   }
 </style>
 </head>
