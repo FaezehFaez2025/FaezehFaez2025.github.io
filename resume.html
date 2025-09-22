@@ -21,6 +21,10 @@
 
     /* Extras */
     --link-blue:#2563eb;
+
+    /* Layout knobs */
+    --date-col: 200px;        /* width of the left time column */
+    --date-badge: 180px;      /* fixed width of the time pill */
   }
 
   *{box-sizing:border-box}
@@ -84,11 +88,10 @@
   .value{color:var(--ink)}
   .summary{color:var(--muted-2);line-height:1.7;margin-top:8px}
 
-  /* ===== Work section (template-like layout) ===== */
+  /* ===== Work section ===== */
   .work-list{list-style:none;margin:0;padding:0}
   .work-item{
-    /* widen time column, narrow description column */
-    display:grid;grid-template-columns:170px 1fr;
+    display:grid;grid-template-columns:var(--date-col) 1fr;
     gap:18px;padding:16px 0;border-top:1px solid var(--border)
   }
   .work-item:first-child{border-top:none;padding-top:2px}
@@ -98,12 +101,13 @@
   }
   .date-badge{
     display:inline-block;
-    padding:6px 10px;border-radius:8px;
+    width:var(--date-badge);            /* fixed pill width */
+    padding:8px 12px;border-radius:12px;
     background:var(--chip-bg);color:#0f766e;font-weight:800;font-size:12.5px;
     text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--border);
-    min-width:120px;           /* a touch wider */
-    white-space:nowrap;        /* keep on one line */
-    line-height:1;             /* tighter to resist wrapping */
+    white-space:nowrap;                 /* never wrap */
+    text-align:center;                  /* center text in fixed pill */
+    line-height:1;                      /* compact vertical rhythm */
   }
 
   .role-title{margin:0;font-weight:700;font-size:16px}
@@ -132,7 +136,7 @@
     .pdf-btn{position:static;margin:10px 0}
     .work-item{grid-template-columns:1fr}
     .date-col{justify-content:flex-start}
-    .date-badge{white-space:nowrap}
+    .date-badge{width:auto;min-width:var(--date-badge)} /* keep it readable on narrow screens */
   }
 </style>
 </head>
