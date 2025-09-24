@@ -25,6 +25,10 @@
     /* Layout knobs */
     --header-h: 72px;     /* fixed header height */
     --progress-h: 4px;    /* progress bar height */
+    --wrap-w: 1100px;     /* content max width */
+    --sidebar-w: 300px;   /* right profile column width */
+    --gap: 32px;          /* grid gap */
+    --radius: 16px;       /* corners */
   }
 
   *{box-sizing:border-box}
@@ -35,7 +39,7 @@
   a{color:var(--teal-dark);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* ===== Fixed header copied from resume ===== */
+  /* ===== Fixed header ===== */
   .topbar{
     position:fixed;top:0;left:0;right:0;
     background:var(--bg);
@@ -45,7 +49,7 @@
   .topbar .wrap{
     display:flex;align-items:center;justify-content:space-between;
     padding:10px 20px;height:var(--header-h);
-    max-width:1100px;margin:0 auto;
+    max-width:var(--wrap-w);margin:0 auto;
   }
   .brand h1{font-size:22px;margin:0;font-weight:400}
   .brand h1 strong{font-weight:700}
@@ -54,7 +58,7 @@
   .top-nav a:hover{color:var(--ink)}
   .top-nav a.active{color:var(--teal-dark);font-weight:600}
 
-  /* Progress bar under header (same as resume) */
+  /* ===== Progress bar under header ===== */
   #progress{
     position:fixed;left:0;right:0;top:var(--header-h);
     height:var(--progress-h);
@@ -66,59 +70,107 @@
   #progress::-webkit-progress-value{background:var(--teal);transition:width .1s linear}
   #progress::-moz-progress-bar{background:var(--teal)}
 
-  /* Spacer so content starts below fixed header + progress */
+  /* Spacer so content starts below header + progress */
   .header-spacer{height:calc(var(--header-h) + var(--progress-h))}
 
-  /* Page container (aligned with resume’s .wrap width) */
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  /* ===== Page container ===== */
+  .wrap{max-width:var(--wrap-w);margin:0 auto;padding:0 20px}
 
-  /* Your original page styles (kept) */
-  .tab-content{display:none}
-  .tab-content.active{display:block}
-  .header{text-align:left;margin-bottom:40px;margin-top:30px}
-  h1{font-size:2.5rem;font-weight:600;margin-bottom:10px;color:#1a1a1a}
-  .subtitle{font-size:1.2rem;color:#666;margin-bottom:30px}
-  .profile-image{width:200px;height:200px;border-radius:50%;object-fit:cover;margin:20px 0;display:block}
-  .content{font-size:1.1rem;line-height:1.8;text-align:justify}
-  .content p{margin-bottom:20px}
+  /* ===== Section titles & text ===== */
+  .page-header{margin:30px 0 24px}
+  h1{font-size:2.2rem;font-weight:700;margin:0;color:#1a1a1a}
+  .subtitle{font-size:1.05rem;color:#666;margin-top:6px}
 
-  .publication{margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid #eee}
+  /* ===== About section: two-column layout like the example ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr var(--sidebar-w);
+    gap: var(--gap);
+    align-items:start;
+  }
+
+  .about-main{
+    font-size:1.05rem;line-height:1.85;color:#262626;
+  }
+  .about-main p{margin:0 0 16px}
+
+  .profile-card{
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:16px;
+  }
+  .profile-card figure{margin:0}
+  .profile-image{
+    width:100%;height:auto;border-radius:12px;object-fit:cover;display:block;
+  }
+  .profile-meta{
+    margin-top:12px;font-size:.95rem;color:var(--muted-2);
+  }
+  .profile-meta .label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+
+  .contact-icons{
+    display:flex;gap:10px;margin-top:12px;flex-wrap:wrap
+  }
+  .contact-icons a{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:36px;min-width:36px;padding:0 10px;border:1px solid var(--border);
+    border-radius:999px; background:#fff; font-size:.9rem; color:var(--ink);
+    transition:transform .08s ease, background .2s ease;
+  }
+  .contact-icons a:hover{background:#fafafa;transform:translateY(-1px)}
+  .contact-icons .icon{margin-right:6px}
+
+  /* ===== Section spacing ===== */
+  section{margin-bottom:48px}
+  .section-title{
+    font-size:1.5rem;font-weight:700;color:#1a1a1a;margin:8px 0 18px;
+    border-bottom:2px solid #eee;padding-bottom:8px;
+  }
+
+  /* ===== Publications ===== */
+  .publication{margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid #eee}
   .publication:last-child{border-bottom:none}
-  .pub-title{font-weight:600;margin-bottom:8px;color:#1a1a1a}
-  .pub-authors{color:#666;margin-bottom:5px}
-  .pub-venue{color:#0066cc;font-style:italic;margin-bottom:10px}
+  .pub-title{font-weight:600;margin-bottom:6px;color:#1a1a1a}
+  .pub-authors{color:#666;margin-bottom:4px}
+  .pub-venue{color:#0066cc;font-style:italic;margin-bottom:8px}
   .pub-description{color:#555;line-height:1.6}
 
-  .resume-section{margin-bottom:30px}
-  .resume-section h3{
-    font-size:1.3rem;font-weight:600;margin-bottom:15px;color:#1a1a1a;
-    border-bottom:2px solid #eee;padding-bottom:5px;
-  }
-  .resume-item{margin-bottom:20px}
+  /* ===== Resume blocks ===== */
+  .resume-section{margin-bottom:28px}
+  .resume-item{margin-bottom:18px}
   .resume-title{font-weight:600;color:#1a1a1a}
   .resume-org{color:#0066cc;font-style:italic}
   .resume-date{color:#666;font-size:.9rem}
   .resume-description{margin-top:5px;color:#555}
 
-  @media (max-width:768px){
-    .header{margin-top:10px}
-    h1{font-size:2rem}
-    .subtitle{font-size:1.1rem}
-    .profile-image{width:150px;height:150px}
-    .content{font-size:1rem}
+  /* ===== Footer (optional) ===== */
+  .site-footer{color:#777;border-top:1px solid var(--border);padding:18px 0;margin-top:32px;font-size:.95rem}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 930px){
+    .about-grid{
+      grid-template-columns: 1fr;
+    }
+    .profile-card{
+      order:-1; /* show image first on mobile like many personal sites */
+    }
+    h1{font-size:1.9rem}
+    .subtitle{font-size:1rem}
   }
 </style>
 </head>
 <body>
 
-  <!-- Fixed header (same as resume) -->
+  <!-- Fixed header -->
   <div class="topbar" role="banner">
     <div class="wrap">
       <div class="brand">
         <h1><strong>Faezeh</strong> Faez</h1>
       </div>
       <nav class="top-nav" aria-label="Top navigation">
-        <!-- On the home page, set About active. Publications may point to a separate page if you split it later. -->
         <a href="index.html" class="active">about</a>
         <a href="publications.html">publications</a>
         <a href="resume.html">Resume</a>
@@ -126,180 +178,209 @@
     </div>
   </div>
 
-  <!-- Scroll progress (same as resume) -->
+  <!-- Scroll progress -->
   <progress id="progress" value="0" max="1" aria-label="Scroll progress"></progress>
 
   <!-- Spacer -->
   <div class="header-spacer" aria-hidden="true"></div>
 
-  <!-- Page content -->
-  <div class="wrap">
-    <!-- Local (in-page) nav is removed so it doesn’t conflict with the fixed header.
-         If you still want tab buttons, you can add small inline links under the title. -->
+  <!-- Main container -->
+  <main class="wrap" role="main">
 
-    <!-- About Tab -->
-    <section id="about" class="tab-content active" aria-labelledby="About">
-      <div class="header">
-        <h1>Faezeh Faez</h1>
-        <p class="subtitle">Your Title - Your Location</p>
-        <img src="profile-photo.jpg" alt="Faezeh Faez" class="profile-image">
-      </div>
-      <div class="content">
-        <p>I am a [Your Profession] with a focus on [your specialization]. Currently, I am part of <a href="https://company-website.com">Your Company</a>, where I [describe what you do]. My recent work involves [describe recent projects or focus areas].</p>
-        <p>I completed my [Degree] in [Field] at <a href="https://university-website.com">Your University</a>, where I researched [your research topic]. During my studies, I contributed to [projects/internships] at <a href="https://company-website.com">Previous Company</a>. Prior to [current role], I worked at <a href="https://another-company.com">Another Company</a> as a [Previous Role]. I earned my [Previous Degree] from [Previous Institution].</p>
-        <p>I am passionate about [your interests] and am particularly interested in [specific areas of interest]. I enjoy creating solutions that [describe your impact/goals].</p>
-        <p>I love connecting with new people to explore collaboration opportunities, exchange ideas, or simply share experiences. Feel free to reach out via <a href="mailto:your.email@gmail.com">email</a> or connect with me on <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>.</p>
-      </div>
-    </section>
+    <!-- ===== About (two-column like the example) ===== -->
+    <header class="page-header" id="top">
+      <h1><span style="font-weight:700">Faezeh</span> Faez</h1>
+      <p class="subtitle">Machine Learning Researcher — Toronto, Canada</p>
+    </header>
 
-    <!-- Publications Tab -->
-    <section id="publications" class="tab-content" aria-labelledby="Publications">
-      <div class="header">
-        <h1>Publications</h1>
-      </div>
+    <section id="about">
+      <div class="about-grid">
+        <!-- Left: bio text -->
+        <div class="about-main">
+          <p>I am a Machine Learning Researcher focusing on knowledge-graph–centric NLP and efficient LLM training. At <a href="https://www.huawei.com/" target="_blank" rel="noopener">Huawei</a>, I explore graph-aware retrieval, text-to-KG generation, and scalable training strategies that reduce cost while improving downstream multi-hop reasoning.</p>
+          <p>I received my Ph.D. in Telecommunications and have worked across computer vision and signal processing. Recently, I have been building pipelines that synthesize (text, KG) pairs for controllable supervision and evaluating generalization across diverse KG datasets.</p>
+          <p>I enjoy collaborating on research, open-source tooling, and practical ML systems. Feel free to reach out for joint projects, mentorship, or speaking opportunities.</p>
 
-      <div class="content">
-        <!-- MTLSO (ASPDAC 2025) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://doi.org/10.1145/xxxxxxx" target="_blank" rel="noopener">
-              MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization
+          <!-- Social row similar to example -->
+          <div class="contact-icons" aria-label="Quick links">
+            <a href="mailto:your.email@gmail.com" aria-label="Email">
+              <span class="icon">✉️</span> Email
             </a>
-          </div>
-          <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
-          <div class="pub-venue">Proceedings of the 30th Asia and South Pacific Design Automation Conference (ASPDAC), 2025, pp. 72–78</div>
-          <div class="pub-description">
-            Introduces a multi-task learning framework for logic synthesis optimization, jointly leveraging related tasks to improve circuit design efficiency and performance in electronic design automation.
+            <a href="https://github.com/yourgithub" target="_blank" rel="noopener" aria-label="GitHub">
+              <span class="icon">🐙</span> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <span class="icon">🔗</span> LinkedIn
+            </a>
+            <a href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar">
+              <span class="icon">🎓</span> Scholar
+            </a>
           </div>
         </div>
 
-        <!-- Todyformer (TMLR) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://openreview.net/forum?id=xxxx" target="_blank" rel="noopener">
-              Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization
-            </a>
+        <!-- Right: profile card with image and meta -->
+        <aside class="profile-card" aria-label="Profile">
+          <figure>
+            <img src="profile-photo.jpg" alt="Portrait of Faezeh Faez" class="profile-image">
+          </figure>
+          <div class="profile-meta">
+            <span class="label">Location</span>
+            Toronto, Canada
           </div>
-          <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, Yingxue Zhang</div>
-          <div class="pub-venue">Transactions on Machine Learning Research (TMLR)</div>
-          <div class="pub-description">
-            Proposes a dynamic graph transformer framework with structure-aware tokenization, enabling holistic modeling of evolving graph structures for improved representation learning.
+          <div class="profile-meta">
+            <span class="label">Role</span>
+            Machine Learning Researcher
           </div>
-        </div>
-
-        <!-- SCGG (PLOS ONE 2022) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277887" target="_blank" rel="noopener">
-              SCGG: A Deep Structure-Conditioned Graph Generative Model
-            </a>
-          </div>
-          <div class="pub-authors"><strong>Faezeh Faez</strong>, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-          <div class="pub-venue">PLOS ONE, 2022, Vol. 17(11): e0277887</div>
-          <div class="pub-description">
-            Introduces a structure-conditioned graph generative framework that completes graphs by autoregressively adding nodes and edges conditioned on a subgraph, validated on both synthetic and real-world datasets.
-          </div>
-        </div>
-
-        <!-- DMNP (ASONAM 2022) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://doi.org/10.1145/3555041.3559550" target="_blank" rel="noopener">
-              DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs
-            </a>
-          </div>
-          <div class="pub-authors"><strong>Faezeh Faez</strong>, Ali Akhoondian Amiri, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-          <div class="pub-venue">Proceedings of the 2022 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), pp. 76–79</div>
-          <div class="pub-description">
-            Proposes a deep learning framework for predicting missing nodes in partially observed graphs, enhancing graph completion and analysis in social and information networks.
-          </div>
-        </div>
-
-        <!-- CCGG (WWW Companion 2022) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://doi.org/10.1145/3487553.3524236" target="_blank" rel="noopener">
-              CCGG: A Deep Autoregressive Model for Class-Conditional Graph Generation
-            </a>
-          </div>
-          <div class="pub-authors">Yassaman Ommi, Matin Yousefabadi, <strong>Faezeh Faez</strong>, Amirmojtaba Sabour, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-          <div class="pub-venue">Companion Proceedings of The Web Conference (WWW), 2022, pp. 1092–1098</div>
-          <div class="pub-description">
-            Introduces a class-conditional graph generative model that autoregressively generates graphs conditioned on class labels, enabling controllable graph synthesis across diverse domains.
-          </div>
-        </div>
-        
-        <!-- Deep Graph Generators (IEEE Access 2021) -->
-        <div class="publication">
-          <div class="pub-title">
-            <a href="https://ieeexplore.ieee.org/document/9506304" target="_blank" rel="noopener">
-              Deep Graph Generators: A Survey
-            </a>
-          </div>
-          <div class="pub-authors"><strong>Faezeh Faez</strong>, Yassaman Ommi, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-          <div class="pub-venue">IEEE Access, 2021, Vol. 9, pp. 106675–106702</div>
-          <div class="pub-description">
-            Provides a comprehensive survey of deep graph generative models, covering key architectures, applications, and open challenges in graph generation research.
-          </div>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <!-- (Optional) Resume Tab kept for completeness if you still want inline resume content -->
-    <section id="resume" class="tab-content" aria-labelledby="Resume">
-      <div class="header">
-        <h1>Resume</h1>
-      </div>
-      <div class="content">
-        <div class="resume-section">
-          <h3>Education</h3>
-          <div class="resume-item">
-            <div class="resume-title">Ph.D. in [Field]</div>
-            <div class="resume-org">University Name</div>
-            <div class="resume-date">Year - Year</div>
-            <div class="resume-description">Dissertation: [Title]. Advisor: [Name]</div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-title">M.S. in [Field]</div>
-            <div class="resume-org">University Name</div>
-            <div class="resume-date">Year - Year</div>
-          </div>
-        </div>
+    <!-- ===== Publications ===== -->
+    <section id="publications">
+      <h2 class="section-title">Publications</h2>
 
-        <div class="resume-section">
-          <h3>Experience</h3>
-          <div class="resume-item">
-            <div class="resume-title">Current Position</div>
-            <div class="resume-org">Company Name</div>
-            <div class="resume-date">Year - Present</div>
-            <div class="resume-description">Description of responsibilities and achievements.</div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-title">Previous Position</div>
-            <div class="resume-org">Previous Company</div>
-            <div class="resume-date">Year - Year</div>
-            <div class="resume-description">Description of responsibilities and achievements.</div>
-          </div>
+      <!-- MTLSO (ASPDAC 2025) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1145/xxxxxxx" target="_blank" rel="noopener">
+            MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization
+          </a>
         </div>
-
-        <div class="resume-section">
-          <h3>Skills</h3>
-          <div class="resume-item">
-            <div class="resume-description">
-              <strong>Programming Languages:</strong> Python, R, JavaScript, etc.<br>
-              <strong>Tools & Technologies:</strong> TensorFlow, PyTorch, Git, etc.<br>
-              <strong>Areas of Expertise:</strong> Machine Learning, Data Analysis, etc.
-            </div>
-          </div>
+        <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
+        <div class="pub-venue">Proceedings of the 30th Asia and South Pacific Design Automation Conference (ASPDAC), 2025, pp. 72–78</div>
+        <div class="pub-description">
+          Introduces a multi-task learning framework for logic synthesis optimization, jointly leveraging related tasks to improve circuit design efficiency and performance in electronic design automation.
         </div>
+      </article>
 
-        <p>Download full resume as <a href="resume.pdf">PDF</a></p>
-      </div>
+      <!-- Todyformer (TMLR) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://openreview.net/forum?id=xxxx" target="_blank" rel="noopener">
+            Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization
+          </a>
+        </div>
+        <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, Yingxue Zhang</div>
+        <div class="pub-venue">Transactions on Machine Learning Research (TMLR)</div>
+        <div class="pub-description">
+          Proposes a dynamic graph transformer framework with structure-aware tokenization, enabling holistic modeling of evolving graph structures for improved representation learning.
+        </div>
+      </article>
+
+      <!-- SCGG (PLOS ONE 2022) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277887" target="_blank" rel="noopener">
+            SCGG: A Deep Structure-Conditioned Graph Generative Model
+          </a>
+        </div>
+        <div class="pub-authors"><strong>Faezeh Faez</strong>, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+        <div class="pub-venue">PLOS ONE, 2022, Vol. 17(11): e0277887</div>
+        <div class="pub-description">
+          Introduces a structure-conditioned graph generative framework that completes graphs by autoregressively adding nodes and edges conditioned on a subgraph, validated on synthetic and real datasets.
+        </div>
+      </article>
+
+      <!-- DMNP (ASONAM 2022) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1145/3555041.3559550" target="_blank" rel="noopener">
+            DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs
+          </a>
+        </div>
+        <div class="pub-authors"><strong>Faezeh Faez</strong>, Ali Akhoondian Amiri, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+        <div class="pub-venue">Proceedings of the 2022 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), pp. 76–79</div>
+        <div class="pub-description">
+          Proposes a deep learning framework for predicting missing nodes in partially observed graphs, enhancing graph completion and analysis in social and information networks.
+        </div>
+      </article>
+
+      <!-- CCGG (WWW Companion 2022) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1145/3487553.3524236" target="_blank" rel="noopener">
+            CCGG: A Deep Autoregressive Model for Class-Conditional Graph Generation
+          </a>
+        </div>
+        <div class="pub-authors">Yassaman Ommi, Matin Yousefabadi, <strong>Faezeh Faez</strong>, Amirmojtaba Sabour, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+        <div class="pub-venue">Companion Proceedings of The Web Conference (WWW), 2022, pp. 1092–1098</div>
+        <div class="pub-description">
+          Introduces a class-conditional graph generative model that autoregressively generates graphs conditioned on class labels, enabling controllable graph synthesis across diverse domains.
+        </div>
+      </article>
+
+      <!-- Deep Graph Generators (IEEE Access 2021) -->
+      <article class="publication">
+        <div class="pub-title">
+          <a href="https://ieeexplore.ieee.org/document/9506304" target="_blank" rel="noopener">
+            Deep Graph Generators: A Survey
+          </a>
+        </div>
+        <div class="pub-authors"><strong>Faezeh Faez</strong>, Yassaman Ommi, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
+        <div class="pub-venue">IEEE Access, 2021, Vol. 9, pp. 106675–106702</div>
+        <div class="pub-description">
+          Provides a comprehensive survey of deep graph generative models, covering key architectures, applications, and open challenges in graph generation research.
+        </div>
+      </article>
     </section>
-  </div>
+
+    <!-- ===== Resume (optional inline) ===== -->
+    <section id="resume">
+      <h2 class="section-title">Resume</h2>
+
+      <div class="resume-section">
+        <h3>Education</h3>
+        <div class="resume-item">
+          <div class="resume-title">Ph.D. in Telecommunications</div>
+          <div class="resume-org">École de technologie supérieure (ÉTS)</div>
+          <div class="resume-date">Year – Year</div>
+          <div class="resume-description">Dissertation: [Title]. Advisor: [Name]</div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-title">M.S. in [Field]</div>
+          <div class="resume-org">University Name</div>
+          <div class="resume-date">Year – Year</div>
+        </div>
+      </div>
+
+      <div class="resume-section">
+        <h3>Experience</h3>
+        <div class="resume-item">
+          <div class="resume-title">Machine Learning Researcher</div>
+          <div class="resume-org">Huawei</div>
+          <div class="resume-date">Year – Present</div>
+          <div class="resume-description">Graph-aware retrieval, Text→KG generation, and efficient LLM training.</div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-title">Previous Position</div>
+          <div class="resume-org">Previous Company</div>
+          <div class="resume-date">Year – Year</div>
+          <div class="resume-description">Description of responsibilities and achievements.</div>
+        </div>
+      </div>
+
+      <div class="resume-section">
+        <h3>Skills</h3>
+        <div class="resume-item">
+          <div class="resume-description">
+            <strong>Programming:</strong> Python, JavaScript, …<br>
+            <strong>ML/Tools:</strong> PyTorch, TensorFlow, Git, …<br>
+            <strong>Focus:</strong> Knowledge Graphs, NLP, Efficient Training
+          </div>
+        </div>
+      </div>
+
+      <p>Download full resume as <a href="resume.pdf">PDF</a></p>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="year"></span> Faezeh Faez. All rights reserved.
+    </footer>
+
+  </main>
 
 <script>
-  // Scroll progress (same logic as resume)
+  // Scroll progress
   const progress = document.getElementById('progress');
   function setProgressMax(){
     const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -313,15 +394,8 @@
   window.addEventListener('resize', ()=>{ setProgressMax(); updateProgress(); });
   window.addEventListener('load', ()=>{ setProgressMax(); updateProgress(); });
 
-  // Tab switcher (kept from your original)
-  function showTab(tabName){
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabContents.forEach(c => c.classList.remove('active'));
-    const target = document.getElementById(tabName);
-    if (target) target.classList.add('active');
-    // Optionally adjust URL hash without scrolling
-    // history.replaceState(null, '', '#'+tabName);
-  }
+  // Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
