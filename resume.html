@@ -26,6 +26,7 @@
     --date-col: 200px;        /* width of the left time column */
     --date-badge: 180px;      /* fixed width of the time pill */
     --header-h: 72px;         /* fixed header height */
+    --progress-h: 4px;        /* progress bar height */
   }
 
   *{box-sizing:border-box}
@@ -47,8 +48,25 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:10px 20px;height:var(--header-h);
   }
-  /* spacer so content starts below the fixed header */
-  .header-spacer{height:var(--header-h)}
+  /* progress bar just under header */
+  #progress{
+    position:fixed;left:0;right:0;top:var(--header-h);
+    height:var(--progress-h);
+    width:100%;
+    z-index:1001;
+    appearance:none;
+    -webkit-appearance:none;
+    border:none;margin:0;padding:0;
+    background:transparent;
+  }
+  /* track */
+  #progress::-webkit-progress-bar{background:rgba(0,0,0,.06)}
+  /* value */
+  #progress::-webkit-progress-value{background:var(--teal);transition:width .1s linear}
+  #progress::-moz-progress-bar{background:var(--teal)}
+
+  /* spacer so content starts below fixed header + progress */
+  .header-spacer{height:calc(var(--header-h) + var(--progress-h))}
 
   .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
@@ -67,7 +85,7 @@
     display:inline-flex;align-items:center;gap:6px;
     padding:8px 12px;border-radius:8px;border:1px solid var(--border);
     background:var(--chip-bg);color:var(--teal-dark);font-weight:600;font-size:14px;
-    box-shadow:var(--shadow);cursor:pointer;position:fixed;right:20px;top:calc(var(--header-h) + 12px);z-index:900;
+    box-shadow:var(--shadow);cursor:pointer;position:fixed;right:20px;top:calc(var(--header-h) + var(--progress-h) + 12px);z-index:900;
   }
   .pdf-btn:hover{filter:brightness(.98)}
 
@@ -75,7 +93,7 @@
 
   /* left sidebar nav */
   .sidenav{
-    position:sticky;top:calc(var(--header-h) + 20px);
+    position:sticky;top:calc(var(--header-h) + var(--progress-h) + 20px);
     align-self:start;border-right:1px solid var(--border);padding-right:20px
   }
   .sidenav h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:8px 0 14px}
@@ -109,8 +127,7 @@
 
   .date-col{display:flex;justify-content:flex-start;align-items:flex-start}
   .date-badge{
-    display:inline-block;
-    width:var(--date-badge);
+    display:inline-block;width:var(--date-badge);
     padding:8px 12px;border-radius:12px;
     background:var(--chip-bg);color:#0f766e;font-weight:800;font-size:12.5px;
     text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--border);
@@ -142,7 +159,7 @@
   .entry .summary{margin-top:2px}
 
   /* Anchor offset for fixed header */
-  .anchor{position:relative;top:calc(-1 * (var(--header-h) + 20px))}
+  .anchor{position:relative;top:calc(-1 * (var(--header-h) + var(--progress-h) + 20px))}
 
   @media (max-width:980px){
     .layout{grid-template-columns:1fr}
@@ -158,12 +175,12 @@
 <body>
 
   <!-- Fixed header bar -->
-  <div class="topbar">
+  <div class="topbar" role="banner">
     <div class="wrap">
       <div class="brand">
         <h1><strong>Faezeh</strong> Faez</h1>
       </div>
-      <nav class="top-nav">
+      <nav class="top-nav" aria-label="Top navigation">
         <a href="index.html">about</a>
         <a href="publications.html">publications</a>
         <a href="repositories.html">repositories</a>
@@ -171,7 +188,11 @@
       </nav>
     </div>
   </div>
-  <!-- Spacer so content starts below fixed header -->
+
+  <!-- Scroll progress bar -->
+  <progress id="progress" value="0" max="1" aria-label="Scroll progress"></progress>
+
+  <!-- Spacer so content starts below fixed header + progress -->
   <div class="header-spacer" aria-hidden="true"></div>
 
   <!-- PDF button -->
@@ -324,18 +345,6 @@
                 </div>
               </div>
 
-              <!-- Example if you later add it:
-              <div class="label">2013 – 2018</div>
-              <div>
-                <div class="value"><strong>Ph.D. in Biomedical Engineering</strong></div>
-                <div class="university">
-                  <span class="uni">McGill University</span>,
-                  <span class="city">Montreal</span>
-                </div>
-                <div class="summary">Thesis: MR-Guided Robust Neurological Parameter Estimation from PET Data.</div>
-              </div>
-              -->
-
             </div>
           </div>
         </section>
@@ -411,6 +420,7 @@
   </div>
 
 <script>
+  // In-page nav highlighting
   const links = document.querySelectorAll('.side-link');
   links.forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -427,6 +437,23 @@
     });
   }, {rootMargin:'-60% 0px -30% 0px', threshold:0});
   sections.forEach(s=>observer.observe(s));
+
+  // Scroll progress logic
+  const progress = document.getElementById('progress');
+  function setProgressMax(){
+    // total scrollable height
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.max = Math.max(1, max); // avoid 0
+  }
+  function updateProgress(){
+    progress.value = window.scrollY || window.pageYOffset;
+  }
+  setProgressMax();
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', () => { setProgressMax(); updateProgress(); });
+  // If fonts/content load later and change height
+  window.addEventListener('load', () => { setProgressMax(); updateProgress(); });
 </script>
 </body>
 </html>
