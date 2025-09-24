@@ -19,16 +19,13 @@
     --teal-dark:#1f9e83;
     --chip-bg:#e6f7f3;
 
-    /* Extras */
-    --link-blue:#2563eb;
-
     /* Layout knobs */
-    --header-h: 72px;     /* fixed header height */
-    --progress-h: 4px;    /* progress bar height */
-    --wrap-w: 1100px;     /* content max width */
-    --sidebar-w: 300px;   /* right profile column width */
-    --gap: 32px;          /* grid gap */
-    --radius: 16px;       /* corners */
+    --header-h: 72px;
+    --progress-h: 4px;
+    --wrap-w: 1100px;
+    --sidebar-w: 300px;
+    --gap: 32px;
+    --radius: 16px;
   }
 
   *{box-sizing:border-box}
@@ -39,12 +36,10 @@
   a{color:var(--teal-dark);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* ===== Fixed header ===== */
+  /* Header */
   .topbar{
-    position:fixed;top:0;left:0;right:0;
-    background:var(--bg);
-    border-bottom:1px solid var(--border);
-    z-index:1000;
+    position:fixed;top:0;left:0;right:0;background:var(--bg);
+    border-bottom:1px solid var(--border);z-index:1000;
   }
   .topbar .wrap{
     display:flex;align-items:center;justify-content:space-between;
@@ -54,92 +49,101 @@
   .brand h1{font-size:22px;margin:0;font-weight:400}
   .brand h1 strong{font-weight:700}
   .top-nav{display:flex;gap:20px}
-  .top-nav a{font-size:15px;color:var(--muted);text-decoration:none;transition:color .2s ease}
+  .top-nav a{font-size:15px;color:var(--muted);transition:color .2s ease}
   .top-nav a:hover{color:var(--ink)}
   .top-nav a.active{color:var(--teal-dark);font-weight:600}
 
-  /* ===== Progress bar under header ===== */
+  /* Progress bar */
   #progress{
     position:fixed;left:0;right:0;top:var(--header-h);
-    height:var(--progress-h);
-    width:100%;
-    z-index:1001;
-    appearance:none;-webkit-appearance:none;border:none;margin:0;padding:0;background:transparent;
+    height:var(--progress-h);width:100%;z-index:1001;
+    appearance:none;-webkit-appearance:none;border:none;margin:0;background:transparent;
   }
   #progress::-webkit-progress-bar{background:rgba(0,0,0,.06)}
   #progress::-webkit-progress-value{background:var(--teal);transition:width .1s linear}
   #progress::-moz-progress-bar{background:var(--teal)}
 
-  /* Spacer so content starts below header + progress */
   .header-spacer{height:calc(var(--header-h) + var(--progress-h))}
-
-  /* ===== Page container ===== */
   .wrap{max-width:var(--wrap-w);margin:0 auto;padding:0 20px}
 
-  /* ===== Section titles & text ===== */
+  /* Headings */
   .page-header{margin:30px 0 24px}
   h1{font-size:2.2rem;font-weight:700;margin:0;color:#1a1a1a}
   .subtitle{font-size:1.05rem;color:#666;margin-top:6px}
 
-  /* ===== About section: two-column layout like the example ===== */
+  /* About grid */
   .about-grid{
-    display:grid;
-    grid-template-columns: 1fr var(--sidebar-w);
-    gap: var(--gap);
-    align-items:start;
+    display:grid;grid-template-columns: 1fr var(--sidebar-w);
+    gap: var(--gap);align-items:start;
   }
-
-  .about-main{
-    font-size:1.05rem;line-height:1.85;color:#262626;
-  }
+  .about-main{font-size:1.05rem;line-height:1.85;color:#262626}
   .about-main p{margin:0 0 16px}
 
   .profile-card{
-    position:relative;
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:16px;
+    background:var(--panel);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;
   }
   .profile-card figure{margin:0}
-  .profile-image{
-    width:100%;height:auto;border-radius:12px;object-fit:cover;display:block;
-  }
-  .profile-meta{
-    margin-top:12px;font-size:.95rem;color:var(--muted-2);
-  }
+  .profile-image{width:100%;height:auto;border-radius:12px;object-fit:cover;display:block}
+  .profile-meta{margin-top:12px;font-size:.95rem;color:var(--muted-2)}
   .profile-meta .label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
 
-  .contact-icons{
-    display:flex;gap:10px;margin-top:12px;flex-wrap:wrap
-  }
+  .contact-icons{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
   .contact-icons a{
     display:inline-flex;align-items:center;justify-content:center;
     height:36px;min-width:36px;padding:0 10px;border:1px solid var(--border);
-    border-radius:999px; background:#fff; font-size:.9rem; color:var(--ink);
+    border-radius:999px;background:#fff;font-size:.9rem;color:var(--ink);
     transition:transform .08s ease, background .2s ease;
   }
   .contact-icons a:hover{background:#fafafa;transform:translateY(-1px)}
   .contact-icons .icon{margin-right:6px}
 
-  /* ===== Section spacing ===== */
+  /* Sections */
   section{margin-bottom:48px}
   .section-title{
     font-size:1.5rem;font-weight:700;color:#1a1a1a;margin:8px 0 18px;
     border-bottom:2px solid #eee;padding-bottom:8px;
   }
+  .resume-section{margin-bottom:28px}
+  .resume-item{margin-bottom:18px}
+  .resume-title{font-weight:600;color:#1a1a1a}
+  .resume-org{color:#0066cc;font-style:italic}
+  .resume-date{color:#666;font-size:.9rem}
+  .resume-description{margin-top:5px;color:#555}
 
-  <!-- Scroll progress -->
+  .site-footer{color:#777;border-top:1px solid var(--border);padding:18px 0;margin-top:32px;font-size:.95rem}
+
+  @media (max-width: 930px){
+    .about-grid{grid-template-columns: 1fr}
+    .profile-card{order:-1}
+    h1{font-size:1.9rem}
+    .subtitle{font-size:1rem}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand">
+        <h1><strong>Faezeh</strong> Faez</h1>
+      </div>
+      <nav class="top-nav" aria-label="Top navigation">
+        <a href="index.html" class="active">about</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Progress -->
   <progress id="progress" value="0" max="1" aria-label="Scroll progress"></progress>
-
-  <!-- Spacer -->
   <div class="header-spacer" aria-hidden="true"></div>
 
-  <!-- Main container -->
+  <!-- Main -->
   <main class="wrap" role="main">
 
-    <!-- ===== About (two-column like the example) ===== -->
+    <!-- About -->
     <header class="page-header" id="top">
       <h1><span style="font-weight:700">Faezeh</span> Faez</h1>
       <p class="subtitle">Machine Learning Researcher — Toronto, Canada</p>
@@ -147,136 +151,28 @@
 
     <section id="about">
       <div class="about-grid">
-        <!-- Left: bio text -->
         <div class="about-main">
           <p>I am a Machine Learning Researcher focusing on knowledge-graph–centric NLP and efficient LLM training. At <a href="https://www.huawei.com/" target="_blank" rel="noopener">Huawei</a>, I explore graph-aware retrieval, text-to-KG generation, and scalable training strategies that reduce cost while improving downstream multi-hop reasoning.</p>
           <p>I received my Ph.D. in Telecommunications and have worked across computer vision and signal processing. Recently, I have been building pipelines that synthesize (text, KG) pairs for controllable supervision and evaluating generalization across diverse KG datasets.</p>
           <p>I enjoy collaborating on research, open-source tooling, and practical ML systems. Feel free to reach out for joint projects, mentorship, or speaking opportunities.</p>
 
-          <!-- Social row similar to example -->
           <div class="contact-icons" aria-label="Quick links">
-            <a href="mailto:your.email@gmail.com" aria-label="Email">
-              <span class="icon">✉️</span> Email
-            </a>
-            <a href="https://github.com/yourgithub" target="_blank" rel="noopener" aria-label="GitHub">
-              <span class="icon">🐙</span> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <span class="icon">🔗</span> LinkedIn
-            </a>
-            <a href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar">
-              <span class="icon">🎓</span> Scholar
-            </a>
+            <a href="mailto:your.email@gmail.com" aria-label="Email"><span class="icon">✉️</span> Email</a>
+            <a href="https://github.com/yourgithub" target="_blank" rel="noopener" aria-label="GitHub"><span class="icon">🐙</span> GitHub</a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">🔗</span> LinkedIn</a>
+            <a href="https://scholar.google.com/" target="_blank" rel="noopener" aria-label="Google Scholar"><span class="icon">🎓</span> Scholar</a>
           </div>
         </div>
 
-        <!-- Right: profile card with image and meta -->
         <aside class="profile-card" aria-label="Profile">
-          <figure>
-            <img src="profile-photo.jpg" alt="Portrait of Faezeh Faez" class="profile-image">
-          </figure>
-          <div class="profile-meta">
-            <span class="label">Location</span>
-            Toronto, Canada
-          </div>
-          <div class="profile-meta">
-            <span class="label">Role</span>
-            Machine Learning Researcher
-          </div>
+          <figure><img src="profile-photo.jpg" alt="Portrait of Faezeh Faez" class="profile-image"></figure>
+          <div class="profile-meta"><span class="label">Location</span>Toronto, Canada</div>
+          <div class="profile-meta"><span class="label">Role</span>Machine Learning Researcher</div>
         </aside>
       </div>
     </section>
 
-    <!-- ===== Publications ===== -->
-    <section id="publications">
-      <h2 class="section-title">Publications</h2>
-
-      <!-- MTLSO (ASPDAC 2025) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://doi.org/10.1145/xxxxxxx" target="_blank" rel="noopener">
-            MTLSO: A Multi-Task Learning Approach for Logic Synthesis Optimization
-          </a>
-        </div>
-        <div class="pub-authors"><strong>Faezeh Faez</strong>, Raika Karimi, Yingxue Zhang, Xing Li, Lei Chen, Mingxuan Yuan, Mahdi Biparva</div>
-        <div class="pub-venue">Proceedings of the 30th Asia and South Pacific Design Automation Conference (ASPDAC), 2025, pp. 72–78</div>
-        <div class="pub-description">
-          Introduces a multi-task learning framework for logic synthesis optimization, jointly leveraging related tasks to improve circuit design efficiency and performance in electronic design automation.
-        </div>
-      </article>
-
-      <!-- Todyformer (TMLR) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://openreview.net/forum?id=xxxx" target="_blank" rel="noopener">
-            Todyformer: Towards Holistic Dynamic Graph Transformers with Structure-Aware Tokenization
-          </a>
-        </div>
-        <div class="pub-authors">Mahdi Biparva, Raika Karimi, <strong>Faezeh Faez</strong>, Yingxue Zhang</div>
-        <div class="pub-venue">Transactions on Machine Learning Research (TMLR)</div>
-        <div class="pub-description">
-          Proposes a dynamic graph transformer framework with structure-aware tokenization, enabling holistic modeling of evolving graph structures for improved representation learning.
-        </div>
-      </article>
-
-      <!-- SCGG (PLOS ONE 2022) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277887" target="_blank" rel="noopener">
-            SCGG: A Deep Structure-Conditioned Graph Generative Model
-          </a>
-        </div>
-        <div class="pub-authors"><strong>Faezeh Faez</strong>, Negin Hashemi Dijujin, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-        <div class="pub-venue">PLOS ONE, 2022, Vol. 17(11): e0277887</div>
-        <div class="pub-description">
-          Introduces a structure-conditioned graph generative framework that completes graphs by autoregressively adding nodes and edges conditioned on a subgraph, validated on synthetic and real datasets.
-        </div>
-      </article>
-
-      <!-- DMNP (ASONAM 2022) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://doi.org/10.1145/3555041.3559550" target="_blank" rel="noopener">
-            DMNP: A Deep Learning Approach for Missing Node Prediction in Partially Observed Graphs
-          </a>
-        </div>
-        <div class="pub-authors"><strong>Faezeh Faez</strong>, Ali Akhoondian Amiri, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-        <div class="pub-venue">Proceedings of the 2022 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), pp. 76–79</div>
-        <div class="pub-description">
-          Proposes a deep learning framework for predicting missing nodes in partially observed graphs, enhancing graph completion and analysis in social and information networks.
-        </div>
-      </article>
-
-      <!-- CCGG (WWW Companion 2022) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://doi.org/10.1145/3487553.3524236" target="_blank" rel="noopener">
-            CCGG: A Deep Autoregressive Model for Class-Conditional Graph Generation
-          </a>
-        </div>
-        <div class="pub-authors">Yassaman Ommi, Matin Yousefabadi, <strong>Faezeh Faez</strong>, Amirmojtaba Sabour, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-        <div class="pub-venue">Companion Proceedings of The Web Conference (WWW), 2022, pp. 1092–1098</div>
-        <div class="pub-description">
-          Introduces a class-conditional graph generative model that autoregressively generates graphs conditioned on class labels, enabling controllable graph synthesis across diverse domains.
-        </div>
-      </article>
-
-      <!-- Deep Graph Generators (IEEE Access 2021) -->
-      <article class="publication">
-        <div class="pub-title">
-          <a href="https://ieeexplore.ieee.org/document/9506304" target="_blank" rel="noopener">
-            Deep Graph Generators: A Survey
-          </a>
-        </div>
-        <div class="pub-authors"><strong>Faezeh Faez</strong>, Yassaman Ommi, Mahdieh Soleymani Baghshah, Hamid R. Rabiee</div>
-        <div class="pub-venue">IEEE Access, 2021, Vol. 9, pp. 106675–106702</div>
-        <div class="pub-description">
-          Provides a comprehensive survey of deep graph generative models, covering key architectures, applications, and open challenges in graph generation research.
-        </div>
-      </article>
-    </section>
-
-    <!-- ===== Resume (optional inline) ===== -->
+    <!-- Resume (kept) -->
     <section id="resume">
       <h2 class="section-title">Resume</h2>
 
@@ -328,7 +224,6 @@
     <footer class="site-footer">
       © <span id="year"></span> Faezeh Faez. All rights reserved.
     </footer>
-
   </main>
 
 <script>
@@ -346,7 +241,7 @@
   window.addEventListener('resize', ()=>{ setProgressMax(); updateProgress(); });
   window.addEventListener('load', ()=>{ setProgressMax(); updateProgress(); });
 
-  // Year in footer
+  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
